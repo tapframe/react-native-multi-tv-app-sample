@@ -17,33 +17,30 @@ export default function ExploreScreen() {
 
   const onDirectionHandledWithoutMovement = useCallback(
     (movement: Direction) => {
-      console.log("Direction " + movement);
-      if (movement === 'left' && focusedIndex === 0) {
+      console.log('Direction ' + movement);
+      if (movement === 'left') {
         navigation.dispatch(DrawerActions.openDrawer());
         toggleMenu(true);
       }
     },
-    [toggleMenu, focusedIndex, navigation],
+    [toggleMenu, navigation],
   );
 
-
   return (
-    <SpatialNavigationRoot isActive={isActive}
-      onDirectionHandledWithoutMovement={onDirectionHandledWithoutMovement}>
+    <SpatialNavigationRoot isActive={isActive} onDirectionHandledWithoutMovement={onDirectionHandledWithoutMovement}>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-      <DefaultFocus>
-        <SpatialNavigationFocusableView>
-          <Text style={styles.title}>Explore Screen</Text>
-         </SpatialNavigationFocusableView>
-      </DefaultFocus>
+        <DefaultFocus>
+          <SpatialNavigationFocusableView>
+            <Text style={styles.title}>Explore Screen</Text>
+          </SpatialNavigationFocusableView>
+        </DefaultFocus>
       </View>
     </SpatialNavigationRoot>
   );
 }
 
-const useExploreStyles = function() {
-
+const useExploreStyles = function () {
   return StyleSheet.create({
     container: {
       flex: 1,
